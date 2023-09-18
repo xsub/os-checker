@@ -1,3 +1,7 @@
+Certainly, if you've added a built-in caching mechanism to improve the performance of repeated checks, you can update the README.md like this:
+
+---
+
 # os_checker Library (PoC)
 
 ## Author
@@ -7,12 +11,14 @@ Pawel Suchanecki <psuchanecki@almalinux.org>
 MIT License
 
 ## Overview
-The `os_checker` library offers a Python decorator to conditionally execute functions based on the underlying operating system and its version. It supports specifying supported systems and versions through a YAML configuration file.
+The `os_checker` library offers a Python decorator to conditionally execute functions based on the underlying operating system and its version. It provides an interface for specifying supported systems and versions through a YAML configuration file.
 
 ## Features
 - Utilizes `/etc/os-release` for accurate OS information.
 - Fallbacks to Python `distro` library or `uname` if `/etc/os-release` is unavailable.
+- Supports YAML configuration for defining supported OS versions.
 - Customizable success and failure messages.
+- Built-in caching for repeated checks.
 
 ## Requirements
 - Python 3.x
@@ -32,7 +38,7 @@ pip install distro  # Optional
 ```python
 from os_checker import os_checker
 
-checker = os_checker(yaml_path='supported_systems.yaml')
+checker = os_checker(yaml_path='supported_versions.yaml')
 
 MESSAGE_PREFIX = "os_checker-demo: "
 
@@ -46,24 +52,7 @@ def only_os_demo():
 # ... Other functions
 ```
 
-### Example Cases Explained
-
-1. **Only OS Check (`only_os_demo`)**  
-   - **What it does**: Verifies if the running OS is AlmaLinux. If so, executes the function.
-   - **Messages**: Custom success or failure messages related to OS-only checks.
-  
-2. **OS and Version Check (`os_and_version_demo`)**  
-   - **What it does**: Verifies if the running OS is AlmaLinux and its version is 8.4. If so, executes the function.
-   - **Messages**: Custom success or failure messages for both OS and version checks.
-  
-3. **OS and Another Version Check (`os_and_version_demo_2`)**  
-   - **What it does**: Verifies if the running OS is AlmaLinux and its version is 9.2. If so, executes the function.
-   - **Messages**: Custom success or failure messages for both OS and version checks.
-  
-Each function in `os_checker-example.py` illustrates one of these cases.
-
 ## Fallback Mechanism
 
 If `/etc/os-release` is not available, the library falls back to using the Python `distro` library. If `distro` is also not accessible, it uses `uname` to fetch the system name.
 
----

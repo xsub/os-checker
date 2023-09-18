@@ -1,0 +1,7 @@
+AlmaLinux:
+  - '9.2'
+Ubuntu:
+  - '20.04'
+macOS:
+  - '11.0'
+
