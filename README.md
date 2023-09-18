@@ -45,10 +45,10 @@ def only_os_demo():
     print(f"{MESSAGE_PREFIX}This will run only on AlmaLinux, irrespective of the version.")
     print("---")
 
-# ... Other functions
 ```
 
 ## Fallback Mechanism
 
 If `/etc/os-release` is not available, the library falls back to using the Python `distro` library. If `distro` is also not accessible, it uses `uname` to fetch the system name.
+
 
