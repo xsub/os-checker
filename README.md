@@ -1,7 +1,3 @@
-Certainly, if you've added a built-in caching mechanism to improve the performance of repeated checks, you can update the README.md like this:
-
----
-
 # os_checker Library (PoC)
 
 ## Author
